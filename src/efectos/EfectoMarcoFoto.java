@@ -23,7 +23,7 @@ public class EfectoMarcoFoto extends EfectoMarco {
 
         // White frame
         setAnchura(anchoMarcoExterior + anchoMarcoBlanco);
-        setColor(super.getColor());
+        setColor(colorBlanco);
         super.aplicar();
 
         // Exterior frame

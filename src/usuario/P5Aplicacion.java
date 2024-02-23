@@ -27,36 +27,34 @@ public class P5Aplicacion {
 	    String fichero = "MicroHobby.jpg";
 
 	    //Generación de la imagen original.
-	    imagen = new ImagenRGB("MicroHobby.jpg");
+	    imagen = new ImagenRGB(fichero);
 	    imagen.presentarImagen();
 
 	    //Procesamiento con espejos - Vertical.
-	    efecto = new EfectoEspejo("Imagen Efecto Vertical", imagen, true);
+	    efecto = new EfectoEspejo("Efecto Espejo", imagen, true);
 	    imagen = OperarEfecto (efecto, false);
 
 	    //Procesamiento con espejos - Horizontal.
 	    //Para realizar esta operación deberá operar con la misma instancia
 	    //de efecto que generó en el bloque anterior.
 
-		efecto = new EfectoEspejo("Imagen Efecto Horizontal", imagen, false);
-	    imagen = OperarEfecto (efecto, false);
+		((EfectoEspejo) efecto).setTipo(false);
+		efecto.aplicar();
 
-	    //Procesamiento con espejos - Deshacer espejado total.
+	    // Procesamiento con espejos - Deshacer espejado total.
 	    // Durante las pruebas, puede comentar esta sentencia si desea dejar
 	    // la implementación del método deshacer() para el final.
 
-	    imagen = OperarEfecto (efecto, true);
+		efecto.deshacer();
 
 	    //Establecimiento de un marco estilo foto.
-		ColorRGB colorMarcoFoto = new ColorRGB(255,255,255);
+		ColorRGB colorMarcoFoto = new ColorRGB(110,245,100);
 	    efecto = new EfectoMarcoFoto("Imagen con Marco Foto", imagen, colorMarcoFoto);
-	    imagen = OperarEfecto (efecto, false);             //Rellene
+	    imagen = OperarEfecto (efecto, false);
 
 	    //Guarda resultado en fichero.
-
-
+		imagen.escribirImagen("MicroHobbyProcesado.jpg");
 	}
-
 
 	/**
 	 * Este método se encarga de aplicar un procesado sobre la imagen. Devuelve la imagen
