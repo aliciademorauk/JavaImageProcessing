@@ -4,7 +4,7 @@ import imagenes.ColorRGB;
 import imagenes.ImagenRGB;
 
 public class EfectoEspejo extends Efecto {
-    public boolean tipo;
+    private boolean tipo;
 
     public EfectoEspejo(String nombre, ImagenRGB imagen, boolean tipo) {
         super(nombre, imagen);

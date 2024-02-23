@@ -3,17 +3,14 @@ package efectos;
 import imagenes.ColorRGB;
 import imagenes.ImagenRGB;
 
-import java.awt.*;
-
 public class EfectoMarco extends Efecto {
-    int anchoMarco;
-    ColorRGB colorMarco;
+    private int anchoMarco;
+    private ColorRGB colorMarco;
 
     public EfectoMarco (String nombre, ImagenRGB imagen, int ancho, ColorRGB color) {
         super(nombre, imagen);
         this.colorMarco = color;
-        // Check that the width (ancho) given is less than or equal to the min value of either half the height or half the width
-        // Else set to 0 (i.e. don't apply a frame)
+        // I added this method below to avoid code duplication in constructor and setAnchura method
         if (isAnchuraValid(ancho)) {
             this.anchoMarco = ancho;
         }
@@ -22,9 +19,6 @@ public class EfectoMarco extends Efecto {
         }
     }
 
-    // I added this method myself to avoid code duplication in constructor and setAnchura method:
-    // Check that the width (ancho) given is less than or equal to the min value of either half the height or half the width
-    // Else set to 0 (i.e. don't apply a frame)
     public boolean isAnchuraValid(int ancho) {
         return ancho <= Math.min((imagenActual.getAlto() / 2),(imagenActual.getAlto() / 2));
     }
@@ -62,12 +56,12 @@ public class EfectoMarco extends Efecto {
         //Paint the sides excluding the corners that have already been painted
         for (int y = anchoMarco + 1; y <= altoImagen - anchoMarco; y++) {
 
-            //Right-hand side
+            //Left-hand side
             for (int x = 0; x <= anchoImagen; x++) {
                 imagenActual.setPixel(y,x,colorMarco);
             }
 
-            //Left-hand side
+            //Right-hand side
             for (int x = anchoImagen - anchoMarco; x <= anchoImagen; x++) {
                 imagenActual.setPixel(y,x,colorMarco);
             }
