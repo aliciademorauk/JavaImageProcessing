@@ -4,24 +4,21 @@ import imagenes.ColorRGB;
 import imagenes.ImagenRGB;
 
 public class EfectoEspejo extends Efecto {
-
     public boolean tipo;
 
     public EfectoEspejo(String nombre, ImagenRGB imagen, boolean tipo) {
         super(nombre, imagen);
         this.tipo = tipo;
     }
+    public void setTipo (boolean tipo) {this.tipo = tipo;}
 
-    public void setTipo (boolean tipo) {
-        this.tipo = tipo;
-    }
-
-    public void aplicar (boolean tipo) {
+    @Override
+    public void aplicar () {
         int altoImagen = imagenActual.getAlto();
         int anchoImagen = imagenActual.getAncho();
 
         // If tipo is true, perform vertical mirror effect
-        if (tipo) {
+        if (this.tipo) {
             for (int y = 0; y <= altoImagen; y++) {
                 for (int x = 0; x <= anchoImagen; x++) {
                     int symmetricalXValueForReplacement = anchoImagen - x - 1;

@@ -3,7 +3,6 @@ package efectos;
 import imagenes.ImagenRGB;
 
 public abstract class Efecto {
-
     public String nombre;
     public ImagenRGB imagenOriginal;
     protected ImagenRGB imagenActual;
@@ -15,11 +14,7 @@ public abstract class Efecto {
 
     public String getNombre() {return nombre;}
     public ImagenRGB getImagen() {return imagenActual;}
-
-    public void aplicar(){
-
-    };
-    public void deshacer(){
-        this.imagenActual = imagenOriginal;
-    };
+    public abstract void aplicar();
+    public void deshacer(){this.imagenActual = imagenOriginal;}
+    public abstract void aplicar(boolean tipo);
 }
