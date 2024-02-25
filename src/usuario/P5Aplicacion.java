@@ -19,12 +19,13 @@ import imagenes.ImagenRGB;
  * @author programaci�n II
  * @version 1.0
  */
+
 public class P5Aplicacion {
 
 	public static void main(String[] args) {
 	    ImagenRGB imagen;
 	    Efecto efecto;
-	    String fichero = "src/MicroHobby.jpg";
+	    String fichero = "MicroHobby.jpg";
 
 	    //Generación de la imagen original.
 	    imagen = new ImagenRGB(fichero);
@@ -43,11 +44,13 @@ public class P5Aplicacion {
 	    // Procesamiento con espejos - Deshacer espejado total.
 	    // Durante las pruebas, puede comentar esta sentencia si desea dejar
 	    // la implementación del método deshacer() para el final.
-		efecto.deshacer();
-		imagen = efecto.getImagen();
+		imagen = OperarEfecto (efecto, true);
 
 	    //Establecimiento de un marco estilo foto.
 		ColorRGB colorMarcoFoto = new ColorRGB(110,245,100); // Kiwi green
+		//efecto = new EfectoMarco("Imagen con Marco Foto", imagen, 20, colorMarcoFoto);
+		//imagen = OperarEfecto (efecto, false);
+
 	    efecto = new EfectoMarcoFoto("Imagen con Marco Foto", imagen, colorMarcoFoto);
 	    imagen = OperarEfecto (efecto, false);
 
@@ -55,18 +58,6 @@ public class P5Aplicacion {
 		imagen.escribirImagen("MicroHobbyProcesado.jpg");
 	}
 
-	/**
-	 * Este método se encarga de aplicar un procesado sobre la imagen. Devuelve la imagen
-	 * resultante y la muestra por pantalla.
-	 * El método permite aplicar el efecto indicado o deshacer las operaciones previamente
-	 * realizadas con el mismo.
-	 * Precondiciones:
-	 * {@code "efecto" debe ser un objeto de clase Efecto (o derivada) válidamente creado.}
-	 * 
-	 * @param efecto Efecto a aplicar o deshacer.
-	 * @param deshacer Con true deshace el tratamiento previamente implementado con el
-	 *                 efecto; Con false aplica el efecto.
-	 */
 	private static ImagenRGB OperarEfecto(Efecto efecto, boolean deshacer) {
 	    ImagenRGB imagenResultado;
 
@@ -74,10 +65,7 @@ public class P5Aplicacion {
 			efecto.aplicar();
 	    }
 		else {
-			// Do I have to rewrite the efectos but in reverse?
-			// Should I create a previousImage variable that keeps storing the last generated image
-			// prior to the latest effect applied, and then I can return this image here as if
-			// it was undoing the latest effect?
+			efecto.deshacer();
 		}
 		imagenResultado = efecto.getImagen();
 	    imagenResultado.presentarImagen();

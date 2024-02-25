@@ -8,7 +8,7 @@ public class EfectoMarcoFoto extends EfectoMarco {
     final private int anchoMarcoExterior = 10;
     final private int anchoMarcoBlanco = 6;
     final private int anchoMarcoInterior = 4;
-    private final ColorRGB colorBlanco = new ColorRGB(255,255,255);;
+    private final ColorRGB colorBlanco = new ColorRGB(255,255,255);
 
     public EfectoMarcoFoto(String nombre, ImagenRGB imagen, ColorRGB color) {
         super(nombre, imagen, 0, color);
@@ -16,9 +16,11 @@ public class EfectoMarcoFoto extends EfectoMarco {
 
     @Override
     public void aplicar() {
+
+        ColorRGB colorCorrecto = super.getColor();
+
         // Interior frame
         setAnchura(anchoMarcoExterior + anchoMarcoBlanco + anchoMarcoInterior);
-        setColor(super.getColor());
         super.aplicar();
 
         // White frame
@@ -28,9 +30,7 @@ public class EfectoMarcoFoto extends EfectoMarco {
 
         // Exterior frame
         setAnchura(anchoMarcoExterior);
-        setColor(super.getColor());
+        setColor(colorCorrecto);
         super.aplicar();
     }
-
-
 }

@@ -39,25 +39,25 @@ public class EfectoMarco extends Efecto {
         int altoImagen = imagenActual.getAlto();
         int anchoImagen = imagenActual.getAncho();
 
-        //Paint the entire part of the top rows that are covered by anchoMarco (the anchoImagen part (x) where y <= anchoMarco)
+        //Paint the entire part of the top rows that are covered by anchoMarco (the anchoImagen part (x) where y < anchoMarco)
         for (int y = 0; y < anchoMarco; y++) {
             for (int x = 0; x < anchoImagen; x++) {
                 imagenActual.setPixel(y,x,colorMarco);
             }
         }
 
-        //Paint the entire part of the bottom rows that are covered by anchoMarco (the anchoImagen part (x) where y <= anchoMarco)
-        for (int y = altoImagen - anchoMarco + 1; y < altoImagen; y++) {
+        //Paint the entire part of the bottom rows that are covered by anchoMarco (the anchoImagen part (x) where y < anchoMarco)
+        for (int y = altoImagen - anchoMarco; y < altoImagen; y++) {
             for (int x = 0; x < anchoImagen; x++) {
                 imagenActual.setPixel(y,x,colorMarco);
             }
         }
 
         //Paint the sides excluding the corners that have already been painted
-        for (int y = anchoMarco + 1; y < altoImagen - anchoMarco; y++) {
+        for (int y = anchoMarco; y < altoImagen - anchoMarco; y++) {
 
             //Left-hand side
-            for (int x = 0; x < anchoImagen; x++) {
+            for (int x = 0; x < anchoMarco; x++) {
                 imagenActual.setPixel(y,x,colorMarco);
             }
 
