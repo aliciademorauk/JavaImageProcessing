@@ -31,24 +31,23 @@ public class P5Aplicacion {
 	    imagen.presentarImagen();
 
 	    //Procesamiento con espejos - Vertical.
-	    efecto = new EfectoEspejo("Efecto Espejo Vertical", imagen, true);
+	    efecto = new EfectoEspejo("Imagen con Efecto Espejo", imagen, true);
 	    imagen = OperarEfecto (efecto, false);
 
 	    //Procesamiento con espejos - Horizontal.
 	    //Para realizar esta operación deberá operar con la misma instancia
 	    //de efecto que generó en el bloque anterior.
-
 		((EfectoEspejo) efecto).setTipo(false);
 		imagen = OperarEfecto (efecto, false);
 
 	    // Procesamiento con espejos - Deshacer espejado total.
 	    // Durante las pruebas, puede comentar esta sentencia si desea dejar
 	    // la implementación del método deshacer() para el final.
-
 		efecto.deshacer();
+		imagen = efecto.getImagen();
 
 	    //Establecimiento de un marco estilo foto.
-		ColorRGB colorMarcoFoto = new ColorRGB(110,245,100);
+		ColorRGB colorMarcoFoto = new ColorRGB(110,245,100); // Kiwi green
 	    efecto = new EfectoMarcoFoto("Imagen con Marco Foto", imagen, colorMarcoFoto);
 	    imagen = OperarEfecto (efecto, false);
 
@@ -75,7 +74,10 @@ public class P5Aplicacion {
 			efecto.aplicar();
 	    }
 		else {
-			efecto.deshacer();
+			// Do I have to rewrite the efectos but in reverse?
+			// Should I create a previousImage variable that keeps storing the last generated image
+			// prior to the latest effect applied, and then I can return this image here as if
+			// it was undoing the latest effect?
 		}
 		imagenResultado = efecto.getImagen();
 	    imagenResultado.presentarImagen();
