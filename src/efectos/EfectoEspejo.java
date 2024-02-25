@@ -19,9 +19,9 @@ public class EfectoEspejo extends Efecto {
 
         // If tipo is true, perform vertical mirror effect
         if (this.tipo) {
-            for (int y = 0; y <= altoImagen; y++) {
-                for (int x = 0; x <= anchoImagen; x++) {
-                    int symmetricalXValueForReplacement = anchoImagen - x - 1;
+            for (int y = 0; y < altoImagen; y++) {
+                for (int x = 0; x < anchoImagen; x++) {
+                    int symmetricalXValueForReplacement = (anchoImagen - 1) - x;
                     ColorRGB correspondingColourReplacement = imagenActual.getPixel(y, symmetricalXValueForReplacement);
                     imagenActual.setPixel(y,x,correspondingColourReplacement);
                 }
@@ -30,9 +30,9 @@ public class EfectoEspejo extends Efecto {
 
         // If tipo is false, perform horizontal mirror effect
         else {
-            for (int y = 0; y <= altoImagen; y++) {
-                for (int x = 0; x <= anchoImagen; x++) {
-                    int symmetricalYValueForReplacement = anchoImagen - y - 1;
+            for (int y = 0; y < altoImagen; y++) {
+                for (int x = 0; x < anchoImagen; x++) {
+                    int symmetricalYValueForReplacement = (altoImagen - 1) - y;
                     ColorRGB correspondingColourReplacement = imagenActual.getPixel(symmetricalYValueForReplacement, x);
                     imagenActual.setPixel(y,x,correspondingColourReplacement);
                 }

@@ -24,14 +24,14 @@ public class P5Aplicacion {
 	public static void main(String[] args) {
 	    ImagenRGB imagen;
 	    Efecto efecto;
-	    String fichero = "MicroHobby.jpg";
+	    String fichero = "src/MicroHobby.jpg";
 
 	    //Generación de la imagen original.
 	    imagen = new ImagenRGB(fichero);
 	    imagen.presentarImagen();
 
 	    //Procesamiento con espejos - Vertical.
-	    efecto = new EfectoEspejo("Efecto Espejo", imagen, true);
+	    efecto = new EfectoEspejo("Efecto Espejo Vertical", imagen, true);
 	    imagen = OperarEfecto (efecto, false);
 
 	    //Procesamiento con espejos - Horizontal.
@@ -39,7 +39,7 @@ public class P5Aplicacion {
 	    //de efecto que generó en el bloque anterior.
 
 		((EfectoEspejo) efecto).setTipo(false);
-		efecto.aplicar();
+		imagen = OperarEfecto (efecto, false);
 
 	    // Procesamiento con espejos - Deshacer espejado total.
 	    // Durante las pruebas, puede comentar esta sentencia si desea dejar
@@ -76,7 +76,6 @@ public class P5Aplicacion {
 	    }
 		else {
 			efecto.deshacer();
-			efecto.aplicar();
 		}
 		imagenResultado = efecto.getImagen();
 	    imagenResultado.presentarImagen();
