@@ -5,21 +5,6 @@ import efectos.EfectoEspejo;
 import efectos.EfectoMarcoFoto;
 import imagenes.ColorRGB;
 import imagenes.ImagenRGB;
-
-/**
- * Clase principal para la Práctica 5.
- * El alumno debe realizar la siguiente secuencia de operaciones:
- *   - Leer una imagen de disco y mostrarla por pantalla.
- *   - Realizar una operación de espejo vertical y mostrar el resultado por pantalla.
- *   - Realizar una ooperación de espejo horizontal y mostrar el resultado por pantalla.
- *   - Deshacer espejado total y mostrar el resultado por pantalla.
- *   - Crear un marco foto a la imagen anterior y mostrar el resultado por pantalla.
- *   - Guardar imagen procesada en disco.
- *
- * @author programaci�n II
- * @version 1.0
- */
-
 public class P5Aplicacion {
 
 	public static void main(String[] args) {
